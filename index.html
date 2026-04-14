@@ -704,6 +704,113 @@ function handleSignup(e) {
     .catch(function(err) {
       console.log('Dynamic content not loaded:', err.message);
     });
+
+  // Quiz Functionality
+  const quizQuestions = [
+    {
+          question: "When getting dressed, you feel…",
+          answers: [
+            { text: "Excited — it's my daily creative outlet", type: "creative" },
+            { text: "Frustrated — nothing feels like ME", type: "explorer" },
+            { text: "Invisible — I play it safe too often", type: "bold" },
+            { text: "Ready — I dress how I feel, always", type: "rebel" }
+                ]
+    },
+    {
+          question: "Your ideal closet essentials include…",
+          answers: [
+            { text: "Bold patterns and statement colors", type: "bold" },
+            { text: "Timeless basics that mix and match", type: "creative" },
+            { text: "Whatever's comfortable and easy", type: "explorer" },
+            { text: "Pieces that make me feel powerful", type: "rebel" }
+                ]
+    },
+    {
+          question: "How do you feel about fashion rules?",
+          answers: [
+            { text: "I love having guidelines", type: "explorer" },
+            { text: "I break them strategically", type: "creative" },
+            { text: "Rules? I write my own", type: "rebel" },
+            { text: "I didn't know there were rules", type: "bold" }
+                ]
+    }
+    ];
+
+  let currentQuestion = 0;
+  let userAnswers = { creative: 0, explorer: 0, bold: 0, rebel: 0 };
+
+  function initQuiz() {
+      const quizSection = document.getElementById('quiz');
+      if (!quizSection) return;
+
+      loadQuestion();
+      attachAnswerListeners();
+  }
+
+  function loadQuestion() {
+      const q = quizQuestions[currentQuestion];
+      const questionEl = document.querySelector('[data-quiz="question"]');
+
+      if (questionEl) {
+            questionEl.textContent = q.question;
+            const container = questionEl.closest('region') || document.getElementById('quiz');
+            const answersContainer = container.querySelector('[data-quiz="answers"]');
+
+            if (answersContainer) {
+                    answersContainer.innerHTML = '';
+                    q.answers.forEach(answer => {
+                              const btn = document.createElement('button');
+                              btn.className = 'quiz-answer-btn';
+                              btn.textContent = answer.text;
+                              btn.dataset.type = answer.type;
+                              btn.onclick = () => selectAnswer(answer.type);
+                              answersContainer.appendChild(btn);
+                    });
+            }
+      }
+  }
+
+  function selectAnswer(type) {
+      userAnswers[type]++;
+      currentQuestion++;
+
+      if (currentQuestion < quizQuestions.length) {
+            loadQuestion();
+      } else {
+            showResults();
+      }
+  }
+
+  function showResults() {
+      const sorted = Object.entries(userAnswers).sort((a, b) => b[1] - a[1]);
+      const winnerType = sorted[0][0];
+
+      const resultText = {
+            bold: "🔥 Bold Dresser – You wear what YOU love, not what's expected.",
+            rebel: "👑 Closet Rebel – You rewrite the rules of style.",
+            creative: "✨ Creative Stylist – You mix, match, and make magic happen.",
+            explorer: "🌟 Style Explorer – You're finding your fashion voice."
+      };
+
+      const quizSection = document.getElementById('quiz');
+      const region = quizSection.closest('region') || quizSection;
+      region.innerHTML = `
+          <h3 style="color: #C1735B; font-size: 1.5rem; margin-bottom: 1rem;">Your Rebel Style:</h3>
+              <p style="font-size: 1.2rem; margin-bottom: 2rem;">${resultText[winnerType]}</p>
+                  <button onclick="location.href='#signup'" style="padding: 12px 32px; background: #C1735B; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem;">Join the Inner Circle</button>
+                    `;
+  }
+
+  function attachAnswerListeners() {
+      document.querySelectorAll('[data-quiz="answers"] button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                    selectAnswer(this.dataset.type);
+            });
+      });
+  }
+
+  // Initialize quiz when page loads
+  document.addEventListener('DOMContentLoaded', initQuiz);
 </script>
 </body>
 </html>
