@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Quiz - Closet Rebel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..150,100..1000;1,9..150,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f5f1ed;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            background-color: #f5f1ed;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #d4685d;
+        }
+        /* Quiz Container */
+        .quiz-container {
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .quiz-header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .quiz-header p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #d4685d;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .question-container {
+            margin-bottom: 2rem;
+            display: none;
+        }
+        .question-container.active {
+            display: block;
+        }
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .answer-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .answer-option {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: white;
+        }
+        .answer-option:hover {
+            border-color: #d4685d;
+            background-color: #faf8f5;
+        }
+        .answer-option.selected {
+            border-color: #d4685d;
+            background-color: #f0e6e0;
+        }
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: space-between;
+        }
+        button {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background-color: #d4685d;
+            color: white;
+            flex: 1;
+        }
+        .btn-primary:hover {
+            background-color: #b85551;
+        }
+        .btn-primary:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+            flex: 1;
+        }
+        .btn-secondary:hover {
+            background-color: #1a1a1a;
+            color: white;
+        }
+        /* Results Screen */
+        .results-container {
+            display: none;
+            text-align: center;
+        }
+        .results-container.active {
+            display: block;
+        }
+        .results-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+        .result-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .result-description {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        .result-traits {
+            background-color: #faf8f5;
+            padding: 1.5rem;
+            border-radius: 0.25rem;
+            margin-bottom: 2rem;
+        }
+        .result-traits h3 {
+            margin-bottom: 1rem;
+        }
+        .traits-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            text-align: left;
+        }
+        .trait {
+            font-size: 0.95rem;
+        }
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .cta-buttons button {
+            width: 100%;
+        }
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #d4685d;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .quiz-container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            .traits-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo" onclick="location.href='index.html'">Closet Rebel</div>
+        <div style="flex: 1;"></div>
+        <a href="index.html">&#8592; Back to Home</a>
+    </nav>
+    <!-- Quiz Container -->
+    <div class="quiz-container">
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <!-- Quiz Header -->
+        <div class="quiz-header" id="quizHeader">
+            <h1>What's Your Rebel Style?</h1>
+            <p>Discover your personal Closet Rebel aesthetic in 60 seconds</p>
+        </div>
+        <!-- Questions -->
+        <div id="quizContent">
+            <!-- Q1 -->
+            <div class="question-container active">
+                <div class="question-text">When getting dressed, you feel...</div>
+                <div class="answer-options">
+                    <div class="answer-option" onclick="selectAnswer(0, 'dopamine')">Excited - it's my daily creative outlet</div>
+                    <div class="answer-option" onclick="selectAnswer(0, 'bold')">Ready - I dress how I feel, always</div>
+                    <div class="answer-option" onclick="selectAnswer(0, 'classic')">Comfortable - I stick with what works</div>
+                    <div class="answer-option" onclick="selectAnswer(0, 'minimalist')">Intentional - every piece has a purpose</div>
+                </div>
+            </div>
+            <!-- Q2 -->
+            <div class="question-container">
+                <div class="question-text">Your ideal outfit is...</div>
+                <div class="answer-options">
+                    <div class="answer-option" onclick="selectAnswer(1, 'dopamine')">Bursting with color and pattern</div>
+                    <div class="answer-option" onclick="selectAnswer(1, 'bold')">Statement piece + bold accessories</div>
+                    <div class="answer-option" onclick="selectAnswer(1, 'classic')">Timeless pieces that never go out of style</div>
+                    <div class="answer-option" onclick="selectAnswer(1, 'minimalist')">Clean lines &amp; neutral palette</div>
+                </div>
+            </div>
+            <!-- Q3 -->
+            <div class="question-container">
+                <div class="question-text">Your fashion rule is...</div>
+                <div class="answer-options">
+                    <div class="answer-option" onclick="selectAnswer(2, 'dopamine')">Color makes everything better</div>
+                    <div class="answer-option" onclick="selectAnswer(2, 'bold')">One bold piece, rest classic</div>
+                    <div class="answer-option" onclick="selectAnswer(2, 'classic')">If it's beautiful, wear it</div>
+                    <div class="answer-option" onclick="selectAnswer(2, 'minimalist')">Less is always more</div>
+                </div>
+            </div>
+            <!-- Q4 -->
+            <div class="question-container">
+                <div class="question-text">When you see a leopard print anything, you...</div>
+                <div class="answer-options">
+                    <div class="answer-option" onclick="selectAnswer(3, 'dopamine')">Immediately want all the prints</div>
+                    <div class="answer-option" onclick="selectAnswer(3, 'bold')">Grab it as your statement piece</div>
+                    <div class="answer-option" onclick="selectAnswer(3, 'classic')">Consider if it works with your collection</div>
+                    <div class="answer-option" onclick="selectAnswer(3, 'minimalist')">Skip it unless it's perfect</div>
+                </div>
+            </div>
+            <!-- Q5 -->
+            <div class="question-container">
+                <div class="question-text">Your shopping strategy is...</div>
+                <div class="answer-options">
+                    <div class="answer-option" onclick="selectAnswer(4, 'dopamine')">Anything that brings me joy</div>
+                    <div class="answer-option" onclick="selectAnswer(4, 'bold')">Pieces that make a statement</div>
+                    <div class="answer-option" onclick="selectAnswer(4, 'classic')">Trusted brands I love</div>
+                    <div class="answer-option" onclick="selectAnswer(4, 'minimalist')">Only what I absolutely need</div>
+                </div>
+            </div>
+        </div>
+        <!-- Results -->
+        <div class="results-container" id="resultsContainer">
+            <div class="results-icon" id="resultIcon"></div>
+            <div class="result-title" id="resultTitle">Your Rebel Style</div>
+            <div class="result-description" id="resultDescription"></div>
+            <div class="result-traits">
+                <h3>Your Signature Style</h3>
+                <div class="traits-list" id="traitsList"></div>
+            </div>
+            <div class="cta-buttons">
+                <button class="btn-primary" onclick="location.href='index.html#shop'">Shop My Favorites</button>
+                <button class="btn-secondary" onclick="location.href='index.html#signup'">Join Inner Circle</button>
+            </div>
+        </div>
+        <!-- Navigation Buttons -->
+        <div class="button-group" id="buttonGroup">
+            <button class="btn-secondary" id="prevBtn" onclick="previousQuestion()" style="display: none;">&#8592; Previous</button>
+            <button class="btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next &#8594;</button>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Closet Rebel. Style without rules. | <a href="index.html">Back to Home</a></p>
+    </footer>
+    <script>
+        let currentQuestion = 0;
+        let answers = [];
+        const totalQuestions = 5;
+        const resultData = {
+            dopamine: {
+                title: 'The Dopamine Dresser',
+                icon: '\uD83C\uDFA8',
+                description: 'You believe fashion should make you FEEL something. Color, pattern, and personality are non-negotiable. Every outfit is a chance to express yourself and brighten your day.',
+                traits: ['Color-forward', 'Pattern-mixing pro', 'Mood-based dressing', 'Joy-seeking', 'Trend-curious']
+            },
+            bold: {
+                title: 'The Bold Rebel',
+                icon: '\uD83D\uDC51',
+                description: 'You are not afraid to make a statement. One killer piece that says this is me is your signature move. Classic base, one bold moment - that is the formula.',
+                traits: ['Statement-piece lover', 'Confidence-first', 'Effortlessly bold', 'Quality over quantity', 'Trendsetter']
+            },
+            classic: {
+                title: 'The Timeless Sophisticate',
+                icon: '\u2728',
+                description: 'You know what works and you stick with it. Beautiful pieces that transcend trends are your playground. Your style is an investment in pieces you will love forever.',
+                traits: ['Timeless taste', 'Investment-minded', 'Elegant', 'Reliable style', 'Curated closet']
+            },
+            minimalist: {
+                title: 'The Intentional Minimalist',
+                icon: '\u26AA',
+                description: 'Every piece in your closet has a purpose. You do not do excess - instead, you master the art of doing more with less. Quality, intention, and meaning matter most.',
+                traits: ['Intentional choices', 'Quality-focused', 'Thoughtful curation', 'Timeless style', 'Anti-clutter']
+            }
+        };
+        function selectAnswer(questionIndex, answer) {
+            answers[questionIndex] = answer;
+            var options = document.querySelectorAll('.question-container.active .answer-option');
+            options.forEach(function(opt) { opt.classList.remove('selected'); });
+            event.target.classList.add('selected');
+            document.getElementById('nextBtn').disabled = false;
+        }
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions - 1) {
+                document.querySelector('.question-container.active').classList.remove('active');
+                currentQuestion++;
+                document.querySelectorAll('.question-container')[currentQuestion].classList.add('active');
+                updateUI();
+            } else if (currentQuestion === totalQuestions - 1) {
+                showResults();
+            }
+        }
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                document.querySelector('.question-container.active').classList.remove('active');
+                currentQuestion--;
+                document.querySelectorAll('.question-container')[currentQuestion].classList.add('active');
+                updateUI();
+            }
+        }
+        function updateUI() {
+            var progress = ((currentQuestion + 1) / totalQuestions) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'block' : 'none';
+            document.getElementById('nextBtn').disabled = !answers[currentQuestion];
+            document.getElementById('nextBtn').textContent = currentQuestion === totalQuestions - 1 ? 'See Results' : 'Next \u2192';
+        }
+        function showResults() {
+            var counts = {};
+            answers.forEach(function(answer) {
+                counts[answer] = (counts[answer] || 0) + 1;
+            });
+            var result = Object.keys(counts).reduce(function(a, b) { return counts[a] > counts[b] ? a : b; });
+            var data = resultData[result];
+            document.getElementById('quizContent').style.display = 'none';
+            document.getElementById('buttonGroup').style.display = 'none';
+            document.getElementById('quizHeader').style.display = 'none';
+            document.querySelector('.progress-bar').style.display = 'none';
+            document.getElementById('resultIcon').textContent = data.icon;
+            document.getElementById('resultTitle').textContent = data.icon + ' ' + data.title;
+            document.getElementById('resultDescription').textContent = data.description;
+            var traitsList = document.getElementById('traitsList');
+            traitsList.innerHTML = '';
+            data.traits.forEach(function(trait) {
+                var traitEl = document.createElement('div');
+                traitEl.className = 'trait';
+                traitEl.textContent = '\u2713 ' + trait;
+                traitsList.appendChild(traitEl);
+            });
+            document.getElementById('resultsContainer').classList.add('active');
+        }
+        updateUI();
+    </script>
+</body>
+</html>
