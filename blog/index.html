@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Closet Rebel Blog — Style Without Apology</title>
+    <meta name="description" content="Plus size outfit ideas, dopamine dressing, midlife style, and manifestation through fashion for Gen X women over 40 who refuse to dress by Boomer rules.">
+    <meta property="og:title" content="The Closet Rebel Blog">
+    <meta property="og:description" content="Style without apology. Plus size, Gen X, dopamine dressing — your closet, your rules.">
+    <meta property="og:image" content="https://closetrebelofficial.com/headshot.jpg.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://closetrebelofficial.com/blog/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand: #C1735B;
+            --brand-dark: #9A573F;
+            --bg: #F5EEE8;
+            --ink: #1a1a1a;
+            --muted: #6B5B52;
+            --card: #FFFFFF;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+        a { color: var(--brand); text-decoration: none; }
+        a:hover { color: var(--brand-dark); text-decoration: underline; }
+        nav.top {
+            background: var(--bg);
+            padding: 24px 32px;
+            border-bottom: 1px solid rgba(193, 115, 91, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(8px);
+            background-color: rgba(245, 238, 232, 0.9);
+        }
+        nav.top .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--ink);
+        }
+        nav.top .logo a { color: inherit; }
+        nav.top .links a {
+            margin-left: 24px;
+            font-weight: 500;
+            color: var(--ink);
+        }
+        nav.top .links a:hover { color: var(--brand); }
+        .hero {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 32px 40px;
+            text-align: center;
+        }
+        .hero .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.75rem;
+            color: var(--brand);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.05;
+            margin: 0 0 20px;
+            color: var(--ink);
+        }
+        .hero h1 em { color: var(--brand); font-style: italic; }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 620px;
+            margin: 0 auto;
+        }
+        .grid {
+            max-width: 1100px;
+            margin: 40px auto 80px;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+        }
+        .post {
+            background: var(--card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(193, 115, 91, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .post:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(193, 115, 91, 0.18);
+        }
+        .post a.card-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+        .post a.card-link:hover { text-decoration: none; }
+        .post .img-wrap {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            background: linear-gradient(135deg, #F5DCC8, #E8B499);
+        }
+        .post .img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .post .body {
+            padding: 24px 26px 28px;
+        }
+        .post .meta {
+            display: flex;
+            gap: 12px;
+            font-size: 0.78rem;
+            color: var(--brand);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .post h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            margin: 0 0 12px;
+            color: var(--ink);
+        }
+        .post p {
+            color: var(--muted);
+            margin: 0 0 16px;
+            font-size: 0.95rem;
+        }
+        .post .read {
+            font-weight: 700;
+            color: var(--brand);
+            font-size: 0.9rem;
+        }
+        footer {
+            background: var(--ink);
+            color: #f5eee8;
+            padding: 60px 32px 40px;
+            text-align: center;
+        }
+        footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 0 0 12px;
+        }
+        footer p { color: #a39a92; max-width: 520px; margin: 0 auto 24px; }
+        footer .links a {
+            color: #f5eee8;
+            margin: 0 14px;
+            font-size: 0.9rem;
+        }
+        footer small { display: block; margin-top: 32px; color: #6B5B52; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <nav class="top">
+        <div class="logo"><a href="/">Closet Rebel</a></div>
+        <div class="links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="https://linktr.ee/daphne.james">Shop</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="eyebrow">The Closet Rebel Blog</div>
+        <h1>Style without <em>apology.</em></h1>
+        <p>Plus size outfit ideas, dopamine dressing, midlife style, and a little manifestation woven in. For Gen X women over 40 who refuse to dress by Boomer rules.</p>
+    </section>
+
+    <main class="grid">
+        <article class="post">
+            <a href="/blog/dopamine-dressing/" class="card-link">
+                <div class="img-wrap">
+                    <img src="/dopamine-pink.jpg.png" alt="Dopamine dressing in pink for Gen X plus size women">
+                </div>
+                <div class="body">
+                    <div class="meta"><span>Style</span><span>5 min read</span></div>
+                    <h2>Dopamine Dressing for Women Over 40</h2>
+                    <p>Why color still belongs in your wardrobe past 40, plus the 5 hues that actually move the needle on your mood.</p>
+                    <span class="read">Read the full post →</span>
+                </div>
+            </a>
+        </article>
+
+        <article class="post">
+            <a href="/blog/kimono-style/" class="card-link">
+                <div class="img-wrap">
+                    <img src="/kimono-hero.jpg.png" alt="Plus size kimono styling for midlife women">
+                </div>
+                <div class="body">
+                    <div class="meta"><span>Style</span><span>4 min read</span></div>
+                    <h2>The Plus Size Kimono Edit</h2>
+                    <p>The one piece that hides nothing AND highlights everything. How to wear a kimono in midlife without looking like you're "trying."</p>
+                    <span class="read">Read the full post →</span>
+                </div>
+            </a>
+        </article>
+
+        <article class="post">
+            <a href="/blog/welcome/" class="card-link">
+                <div class="img-wrap">
+                    <img src="/headshot.jpg.png" alt="Daphne James — Gen X style rebel">
+                </div>
+                <div class="body">
+                    <div class="meta"><span>Manifesto</span><span>3 min read</span></div>
+                    <h2>Welcome to the Rebellion</h2>
+                    <p>What Closet Rebel is, who it's for, and the one rule we never break. Spoiler: there are no rules.</p>
+                    <span class="read">Read the full post →</span>
+                </div>
+            </a>
+        </article>
+    </main>
+
+    <footer>
+        <h3>Get the Inner Circle drop weekly.</h3>
+        <p>One email a week. Outfit ideas, affiliate finds, and the occasional rant about beige.</p>
+        <p><a href="https://linktr.ee/daphne.james" style="background:var(--brand); color:#fff; padding:14px 28px; border-radius:30px; font-weight:700; display:inline-block;">Join the Inner Circle</a></p>
+        <div class="links">
+            <a href="/">Home</a>
+            <a href="https://www.pinterest.com/daphnerjames/">Pinterest</a>
+            <a href="https://buymeacoffee.com/daphnejames">Support</a>
+            <a href="https://linktr.ee/daphne.james">All links</a>
+        </div>
+        <small>© Closet Rebel Official · Your closet, your rules.</small>
+    </footer>
+</body>
+</html>
