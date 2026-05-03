@@ -3,23 +3,496 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kimono - Closet Rebel Blog</title>
+    <title>How I Style a Bold Kimono Three Ways - Closet Rebel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..150,100..1000;1,9..150,100..1000&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'DM Sans', sans-serif; margin: 0; padding: 20px; background-color: #F5EEE8; color: #1a1a1a; }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { color: #C1735B; font-size: 3rem; }
-        a { color: #C1735B; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f5f1ed;
+            color: #1a1a1a;
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            background-color: #f5f1ed;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4685d;
+        }
+
+        /* Article Header */
+        .article-header {
+            background: linear-gradient(135deg, #d4685d 0%, #f5a6a3 100%);
+            color: white;
+            padding: 4rem 3rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            font-size: 0.95rem;
+        }
+
+        .article-excerpt {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Article Content */
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+            background-color: white;
+        }
+
+        .article-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: #1a1a1a;
+        }
+
+        .article-content h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            margin: 1.5rem 0 0.75rem;
+            color: #d4685d;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            color: #444;
+        }
+
+        .article-content ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .outfit-section {
+            background-color: #faf8f5;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .outfit-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: #d4685d;
+            margin-bottom: 1rem;
+        }
+
+        .outfit-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f5a6a3 0%, #d4685d 100%);
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .outfit-details {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .outfit-details h4 {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
+        }
+
+        .outfit-details ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .outfit-details li {
+            padding: 0.25rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .outfit-details li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4685d;
+            font-weight: bold;
+        }
+
+        .quote {
+            border-left: 4px solid #d4685d;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #666;
+        }
+
+        .cta-box {
+            background-color: #faf8f5;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-box h3 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #d4685d;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #b85551;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+        }
+
+        .btn-secondary:hover {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        /* Related Posts */
+        .related-posts {
+            background-color: #f5f1ed;
+            padding: 3rem;
+        }
+
+        .related-posts h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .post-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .post-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #d4685d 0%, #f5a6a3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .post-content {
+            padding: 1.5rem;
+        }
+
+        .post-category {
+            color: #d4685d;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-excerpt {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #d4685d;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1024px) {
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .article-header {
+                padding: 2rem 1rem;
+            }
+
+            .article-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-container {
+                padding: 1rem;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Kimono - Fashion for Bold Women</h1>
-        <p><a href="https://closetrebelofficial.com">← Back to Closet Rebel</a></p>
-        <article>
-            <p>Welcome to the Kimono blog! This page is coming soon with styling tips, fashion insights, and more.</p>
-            <p>Check back soon for amazing content about embracing the kimono trend with confidence and style.</p>
-        </article>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo" onclick="location.href='index.html'">Closet Rebel</div>
+        <div style="flex: 1;"></div>
+        <a href="index.html">← Back to Home</a>
+    </nav>
+
+    <!-- Article Header -->
+    <div class="article-header">
+        <h1>How I Style a Bold Kimono Three Ways</h1>
+        <div class="article-meta">
+            <div class="meta-item">👘 OUTFITS</div>
+            <div class="meta-item">By Daphne James</div>
+        </div>
+        <div class="article-excerpt">One statement piece, three completely different vibes — from casual to casino-ready. Here's how I maximize every piece in my closet.</div>
     </div>
+
+    <div style="margin: 2rem auto; max-width: 700px; text-align: center;">
+        <img src="images/kimono-hero.jpg.png" alt="Bold Kimono Look styled three ways" style="width:100%; border-radius:12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    </div>
+
+    <!-- Article Content -->
+    <div class="article-container">
+        <div class="article-content">
+            <p>I own exactly four kimonos, and I wear them constantly. Not as bedroom wear — as OUTFITS. Because a good kimono isn't just a piece you throw over pajamas; it's a statement piece that changes everything.</p>
+
+            <p>The piece I'm styling today is a silk kimono in deep jewel tones with a subtle pattern. It cost me less than I expected (thanks, Amazon), and I wear it at least twice a week in three completely different ways.</p>
+
+            <p>Want to know the secret? It's not about buying more — it's about styling what you have differently. One piece, infinite possibilities.</p>
+
+            <!-- Outfit 1 -->
+            <div class="outfit-section">
+                <div class="outfit-title">Look 1: Casual Weekend Vibes</div>
+                <div class="outfit-image">👗</div>
+                <div class="outfit-details">
+                    <h4>The Formula:</h4>
+                    <ul>
+                        <li>Silk Kimono (jewel-tone)</li>
+                        <li>White tank or tee</li>
+                        <li>Black straight-leg jeans</li>
+                        <li>White sneakers or sandals</li>
+                        <li>Minimal jewelry (let the kimono do the talking)</li>
+                    </ul>
+                </div>
+                <p><strong>The Vibe:</strong> This is my "running errands but make it fashion" look. The kimono softens the jeans, and the neutral base lets the pattern take center stage. I feel put-together without trying too hard.</p>
+                <p><strong>Pro tip:</strong> Keep the kimono OPEN. Don't button it or tie it closed — let it flow. That's where the magic happens.</p>
+            </div>
+
+            <!-- Outfit 2 -->
+            <div class="outfit-section">
+                <div class="outfit-title">Look 2: Elevated Dinner Ready</div>
+                <div class="outfit-image">✨</div>
+                <div class="outfit-details">
+                    <h4>The Formula:</h4>
+                    <ul>
+                        <li>Silk Kimono (jewel-tone)</li>
+                        <li>Black slip dress or fitted tee</li>
+                        <li>Black tailored pants or a midi skirt</li>
+                        <li>Black heels or dressy flats</li>
+                        <li>Statement earrings</li>
+                    </ul>
+                </div>
+                <p><strong>The Vibe:</strong> This is restaurant-ready, date-night energy. The black underneath grounds the look while the kimono becomes your jewelry. You look intentional and a little mysterious.</p>
+                <p><strong>Pro tip:</strong> The more fitted your base, the more dramatic your kimono looks. Black underneath = maximum impact from your statement piece.</p>
+            </div>
+
+            <!-- Outfit 3 -->
+            <div class="outfit-section">
+                <div class="outfit-title">Look 3: Bold + Brave (Casino-Ready)</div>
+                <div class="outfit-image">👑</div>
+                <div class="outfit-details">
+                    <h4>The Formula:</h4>
+                    <ul>
+                        <li>Silk Kimono (jewel-tone, fully open)</li>
+                        <li>Satin camisole in a complementary color</li>
+                        <li>High-waisted wide-leg trousers</li>
+                        <li>Heels (I do gold or red)</li>
+                        <li>Bold earrings + a simple clutch</li>
+                    </ul>
+                </div>
+                <p><strong>The Vibe:</strong> This is the version that says "I'm not here to blend in." The kimono is fully open (almost like a robe), and you're wearing it as your statement. This is for nights when you want to feel powerful and a little daring.</p>
+                <p><strong>Pro tip:</strong> Add metallic heels or bold lipstick. This look wants to SHINE.</p>
+            </div>
+
+            <h2>The Real Magic: It's Not About Having More</h2>
+            <p>Here's what I learned: I don't need four different outfits. I need ONE great piece (like this kimono) and the confidence to wear it in different ways.</p>
+
+            <p>This is dopamine dressing at its core. You're not buying to fill closet space — you're maximizing what you have to feel DIFFERENT, BOLD, and like yourself.</p>
+
+            <div class="quote">
+                "One piece, styled three ways, equals infinite confidence. That's the Closet Rebel way."
+            </div>
+
+            <h3>Your Challenge This Week:</h3>
+            <p>Find one piece in your closet that makes you feel great (a kimono, a blazer, a scarf, whatever). Wear it three different ways before the week ends. Screenshot it. Tag me. Let's celebrate styling without shopping.</p>
+
+            <div class="cta-box">
+                <h3>Ready to Build Your Bold Wardrobe?</h3>
+                <p style="margin-bottom: 1rem;">Join the Inner Circle for weekly styling inspo, outfit formulas, and exclusive finds.</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" onclick="location.href='index.html#signup'">Join Inner Circle</button>
+                    <button class="btn-secondary" onclick="location.href='index.html#shop'">Shop Kimonos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-posts">
+        <h2>More Style Inspiration</h2>
+        <div class="posts-grid">
+            <div class="post-card" onclick="location.href='closet-rebel-blog-dopamine.html'">
+                <div class="post-image">🎨</div>
+                <div class="post-content">
+                    <p class="post-category">STYLE TIPS</p>
+                    <p class="post-title">Dopamine Dressing: Why Color Changes Everything</p>
+                    <p class="post-excerpt">Science says wearing colors you love lifts your mood. I say wear the leopard print.</p>
+                </div>
+            </div>
+            <div class="post-card" onclick="location.href='index.html#blog'">
+                <div class="post-image">🛍️</div>
+                <div class="post-content">
+                    <p class="post-category">SHOPPING</p>
+                    <p class="post-title">My Amazon Finds Under $50</p>
+                    <p class="post-excerpt">Bold doesn't have to mean expensive. Here are my current favorites.</p>
+                </div>
+            </div>
+            <div class="post-card" onclick="location.href='index.html#app'">
+                <div class="post-image">📱</div>
+                <div class="post-content">
+                    <p class="post-category">TOOLS</p>
+                    <p class="post-title">Master the Style Quiz</p>
+                    <p class="post-excerpt">Discover your personal Closet Rebel aesthetic in 60 seconds.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Closet Rebel. Style without rules. | <a href="index.html">Back to Home</a></p>
+    </footer>
 </body>
 </html>
