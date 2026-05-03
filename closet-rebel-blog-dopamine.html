@@ -3,23 +3,518 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dopamine Dressing - Closet Rebel Blog</title>
+    <title>Dopamine Dressing: Why Color Changes Everything - Closet Rebel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..150,100..1000;1,9..150,100..1000&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'DM Sans', sans-serif; margin: 0; padding: 20px; background-color: #F5EEE8; color: #1a1a1a; }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { color: #C1735B; font-size: 3rem; }
-        a { color: #C1735B; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f5f1ed;
+            color: #1a1a1a;
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            background-color: #f5f1ed;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4685d;
+        }
+
+        /* Article Header */
+        .article-header {
+            background: linear-gradient(135deg, #d4685d 0%, #f5a6a3 100%);
+            color: white;
+            padding: 4rem 3rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            font-size: 0.95rem;
+        }
+
+        .article-excerpt {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Article Content */
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+            background-color: white;
+        }
+
+        .article-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: #1a1a1a;
+        }
+
+        .article-content h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            margin: 1.5rem 0 0.75rem;
+            color: #d4685d;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            color: #444;
+        }
+
+        .article-content ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .science-section {
+            background-color: #faf8f5;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid #d4685d;
+        }
+
+        .science-section h3 {
+            margin-top: 0;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .color-card {
+            text-align: center;
+        }
+
+        .color-swatch {
+            width: 100%;
+            height: 150px;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .color-card h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .color-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .quote {
+            border-left: 4px solid #d4685d;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #666;
+        }
+
+        .tip-box {
+            background-color: #fff5f4;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+            border: 1px solid #f0e6e0;
+        }
+
+        .tip-box h4 {
+            color: #d4685d;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box {
+            background-color: #faf8f5;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-box h3 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #d4685d;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #b85551;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+        }
+
+        .btn-secondary:hover {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        /* Related Posts */
+        .related-posts {
+            background-color: #f5f1ed;
+            padding: 3rem;
+        }
+
+        .related-posts h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .post-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .post-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #d4685d 0%, #f5a6a3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .post-content {
+            padding: 1.5rem;
+        }
+
+        .post-category {
+            color: #d4685d;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-excerpt {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #d4685d;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1024px) {
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .color-palette {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .article-header {
+                padding: 2rem 1rem;
+            }
+
+            .article-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-container {
+                padding: 1rem;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .color-palette {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Dopamine Dressing - Fashion That Makes You Feel Good</h1>
-        <p><a href="https://closetrebelofficial.com">← Back to Closet Rebel</a></p>
-        <article>
-            <p>Welcome to the Dopamine Dressing blog! This page is coming soon with tips on how to dress in colors and styles that boost your mood.</p>
-            <p>Discover how to use bold colors, textures, and fashion choices to create outfits that make you feel confident, happy, and energized every day.</p>
-        </article>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo" onclick="location.href='index.html'">Closet Rebel</div>
+        <div style="flex: 1;"></div>
+        <a href="index.html">← Back to Home</a>
+    </nav>
+
+    <!-- Article Header -->
+    <div class="article-header">
+        <h1>Dopamine Dressing: Why Color Changes Everything</h1>
+        <div class="article-meta">
+            <div class="meta-item">🎨 STYLE TIPS</div>
+            <div class="meta-item">By Daphne James</div>
+        </div>
+        <div class="article-excerpt">Science says wearing colors you love lifts your mood. I say wear the leopard print AND the red lip AND the gold jewelry. Because dopamine dressing isn't just psychology — it's rebellion.</div>
     </div>
+
+    <div style="margin: 2rem auto; max-width: 700px; text-align: center;">
+        <img src="images/1000002503.jpg" alt="Dopamine Dressing - colorful purple maxi dress" style="width:100%; border-radius:12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    </div>
+
+    <!-- Article Content -->
+    <div class="article-container">
+        <div class="article-content">
+            <p>Three years ago, I walked out of my house in beige. Head to toe. Beige sweater, beige pants, beige shoes. I looked at my reflection and didn't recognize myself.</p>
+
+            <p>That's when I discovered dopamine dressing — not as a trend, but as a revolution.</p>
+
+            <h2>What is Dopamine Dressing, Really?</h2>
+            <p>Dopamine is the "feel-good" chemical in your brain. When you see something that brings you joy — a color that makes your heart happy, a pattern that makes you smile — your brain releases dopamine. You feel energized. Alive. Like yourself.</p>
+
+            <p>Dopamine dressing is wearing colors and pieces that trigger that chemical response. It's intentional joy through your wardrobe.</p>
+
+            <p>Not dark academia, not quiet luxury, not minimalism. Just YOU, dressed in the colors that make you feel like YOU.</p>
+
+            <!-- Science Section -->
+            <div class="science-section">
+                <h3>The Science (That Proves What We Already Know)</h3>
+                <p>Psychology research shows that wearing colors you love literally impacts your mood. Warm colors (reds, oranges, warm yellows) increase energy and optimism. Jewel tones (deep purples, teals, sapphires) evoke luxury and confidence. Even your color choice affects how others perceive you.</p>
+                <p>Translation: You're not "overdressed" or "too much." You're neurochemically optimized for feeling great.</p>
+            </div>
+
+            <h2>Finding Your Dopamine Colors</h2>
+            <p>Not every color makes every person happy. That's the whole point. Your dopamine colors are YOURS.</p>
+
+            <p>Mine? Warm jewel tones, leopard print, and anything with pattern and movement. My daughter? Cool jewel tones and neutrals with one bold metallic piece. My friend Sarah? EVERY warm color simultaneously.</p>
+
+            <p>We're all right. We're all dopamine dressing.</p>
+
+            <!-- Color Palette -->
+            <div class="color-palette">
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #d4685d;"></div>
+                    <h4>Warm Red-Orange</h4>
+                    <p>Energy, confidence, power</p>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #c17a5c;"></div>
+                    <h4>Burnt Orange</h4>
+                    <p>Bold, sophisticated, statement</p>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #6b3e32;"></div>
+                    <h4>Deep Brown</h4>
+                    <p>Rich, grounded, timeless</p>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #2d5a4d;"></div>
+                    <h4>Deep Teal</h4>
+                    <p>Calm, luxury, mystery</p>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #4a3f8f;"></div>
+                    <h4>Deep Purple</h4>
+                    <p>Regal, creative, powerful</p>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #f4b55f;"></div>
+                    <h4>Warm Gold</h4>
+                    <p>Optimistic, joyful, luminous</p>
+                </div>
+            </div>
+
+            <h2>The Dopamine Dressing Formula</h2>
+            <p>You don't need to be a rainbow to practice dopamine dressing. Start with this simple formula:</p>
+
+            <div class="tip-box">
+                <h4>🎯 The 3-Step Formula</h4>
+                <ul>
+                    <li><strong>Step 1:</strong> Base in a neutral or your "quiet color" (the one that's less loud)</li>
+                    <li><strong>Step 2:</strong> Add ONE color that makes you genuinely happy</li>
+                    <li><strong>Step 3:</strong> Accessorize with something that makes you SMILE when you catch your reflection</li>
+                </ul>
+                <p style="margin-top: 1rem;">That's it. You just dressed for dopamine.</p>
+            </div>
+
+            <h2>Breaking the "Too Much" Narrative</h2>
+            <p>Here's what I know about being a woman over 40 who wears leopard print, statement jewelry, and bold colors:</p>
+
+            <div class="quote">
+                "Someone will always think you're 'too much.' The question is: are YOU happy? That's the only measurement that matters."
+            </div>
+
+            <p>I've been told I'm too bold, too colorful, too visible. Every time someone said that, I felt a little bit smaller. But then I asked myself: am I happy when I'm wearing beige? No. Am I happy when I'm wearing leopard print and gold jewelry? Absolutely.</p>
+
+            <p>So I chose dopamine.</p>
+
+            <h2>Your Challenge This Week</h2>
+            <p>Look at your closet. What color or piece makes you smile when you see it? Wear it. Not on a "special occasion." Wear it on a Wednesday morning to the grocery store.</p>
+
+            <p>Notice how you feel. Notice if people engage with you differently. Notice if YOU carry yourself differently.</p>
+
+            <p>That shift? That's dopamine working.</p>
+
+            <div class="cta-box">
+                <h3>Ready to Embrace Dopamine Dressing?</h3>
+                <p style="margin-bottom: 1rem;">Join Inner Circle for weekly color styling tips, your personal dopamine palette, and a community of bold women.</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" onclick="location.href='index.html#signup'">Join Inner Circle</button>
+                    <button class="btn-secondary" onclick="location.href='index.html#shop'">Shop Bold Colors</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-posts">
+        <h2>More Style Inspiration</h2>
+        <div class="posts-grid">
+            <div class="post-card" onclick="location.href='closet-rebel-blog-kimono.html'">
+                <div class="post-image">👘</div>
+                <div class="post-content">
+                    <p class="post-category">OUTFITS</p>
+                    <p class="post-title">How I Style a Bold Kimono Three Ways</p>
+                    <p class="post-excerpt">One statement piece, three completely different vibes.</p>
+                </div>
+            </div>
+            <div class="post-card" onclick="location.href='index.html#blog'">
+                <div class="post-image">🛍️</div>
+                <div class="post-content">
+                    <p class="post-category">SHOPPING</p>
+                    <p class="post-title">My Amazon Finds Under $50</p>
+                    <p class="post-excerpt">Bold doesn't have to mean expensive. Here are my current favorites.</p>
+                </div>
+            </div>
+            <div class="post-card" onclick="location.href='index.html#quiz'">
+                <div class="post-image">🎨</div>
+                <div class="post-content">
+                    <p class="post-category">TOOLS</p>
+                    <p class="post-title">Take the Style Quiz</p>
+                    <p class="post-excerpt">Discover your personal Closet Rebel aesthetic in 60 seconds.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Closet Rebel. Style without rules. | <a href="index.html">Back to Home</a></p>
+    </footer>
 </body>
 </html>
