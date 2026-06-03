@@ -451,6 +451,96 @@ footer{background:var(--ink);border-top:1px solid var(--border-dk);padding:60px 
   </div>
 </section>
 
+<!-- DAILY FEED -->
+<section class="daily-feed" id="daily-feed" style="padding:60px 20px;background:#1a1a1a;">
+  <div style="max-width:900px;margin:0 auto;">
+    <h2 style="text-align:center;color:#fff;font-size:2rem;margin-bottom:8px;letter-spacing:0.05em;">TODAY'S STYLE INSPO</h2>
+    <p style="text-align:center;color:#aaa;margin-bottom:40px;font-size:0.95rem;">Fresh from the Closet Rebel universe</p>
+    <div id="cr-daily-post" style="background:#222;border-radius:16px;overflow:hidden;box-shadow:0 4px 30px rgba(0,0,0,0.4);">
+      <div style="padding:40px;text-align:center;color:#aaa;">Loading today's post...</div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var SHEET_ID = '1_aYEbck90dD5RtCgEcEPEFwGY3DOowmSexwyG-xkEC0';
+  var url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json';
+
+  fetch(url)
+    .then(function(r) { return r.text(); })
+    .then(function(text) {
+      var json = JSON.parse(text.substring(47, text.length - 2));
+      var rows = json.table.rows;
+      var today = new Date().toISOString().split('T')[0];
+      var post = null;
+
+      // Find today's post or most recent ready post
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        var date = row.c[0] && row.c[0].v ? row.c[0].v : '';
+        // Google Sheets date comes as Date string
+        if (typeof date === 'string' && date.substring(0,10) === today) {
+          post = row; break;
+        }
+      }
+      // Fallback: last row with Status = Ready
+      if (!post) {
+        for (var j = rows.length - 1; j >= 0; j--) {
+          var status = rows[j].c[13] && rows[j].c[13].v;
+          if (status && status.toString().trim() === 'Ready') { post = rows[j]; break; }
+        }
+      }
+
+      var el = document.getElementById('cr-daily-post');
+      if (!post) {
+        el.innerHTML = '<div style="padding:40px;text-align:center;color:#aaa;">Check back soon for today\'s look!</div>';
+        return;
+      }
+
+      var c = post.c;
+      var identity = c[2] && c[2].v || '';
+      var type = c[3] && c[3].v || '';
+      var headline = c[4] && c[4].v || '';
+      var mood = c[5] && c[5].v || '';
+      var imageUrl = c[6] && c[6].v || '';
+      var products = [c[7],c[8],c[9],c[10],c[11]].filter(function(p){return p && p.v;});
+      var cta = c[12] && c[12].v || '';
+      // Link columns (14-18) — added by user
+      var links = [c[14],c[15],c[16],c[17],c[18]].map(function(l){return l && l.v ? l.v : '';});
+
+      var productHTML = products.map(function(p, i) {
+        var link = links[i];
+        var name = p.v;
+        if (link) {
+          return '<a href="' + link + '" target="_blank" rel="nofollow" style="display:inline-block;margin:5px;padding:10px 18px;background:#c0392b;color:#fff;border-radius:20px;text-decoration:none;font-size:0.85rem;font-weight:600;">' + name + '</a>';
+        }
+        return '<span style="display:inline-block;margin:5px;padding:10px 18px;background:#333;color:#aaa;border-radius:20px;font-size:0.85rem;">' + name + '</span>';
+      }).join('');
+
+      var imgHTML = imageUrl && imageUrl !== '[photo]'
+        ? '<img src="' + imageUrl + '" alt="' + headline + '" style="width:100%;max-height:500px;object-fit:cover;display:block;">'
+        : '';
+
+      el.innerHTML = 
+        imgHTML +
+        '<div style="padding:30px;">' +
+          '<div style="margin-bottom:12px;">' +
+            '<span style="background:#c0392b;color:#fff;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">' + identity + '</span>' +
+            '<span style="color:#aaa;font-size:0.8rem;margin-left:10px;">' + type + '</span>' +
+          '</div>' +
+          '<h3 style="color:#fff;font-size:1.6rem;margin:0 0 10px 0;">' + headline + '</h3>' +
+          '<p style="color:#bbb;margin:0 0 20px 0;line-height:1.6;">' + mood + '</p>' +
+          '<div style="margin-bottom:20px;">' + productHTML + '</div>' +
+          (cta ? '<p style="color:#c0392b;font-weight:700;font-size:1rem;margin:0;">&#x2192; ' + cta + '</p>' : '') +
+        '</div>';
+    })
+    .catch(function() {
+      document.getElementById('cr-daily-post').innerHTML = '<div style="padding:40px;text-align:center;color:#aaa;">Check back soon for today\'s look!</div>';
+    });
+})();
+</script>
+
 
 <!-- BLOG -->
 <section class="content-section" id="blog">
