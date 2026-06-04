@@ -472,23 +472,26 @@ footer{background:var(--ink);border-top:1px solid var(--border-dk);padding:60px 
     .then(function(text) {
       var json = JSON.parse(text.substring(47, text.length - 2));
       var rows = json.table.rows;
-      var today = new Date().toISOString().split('T')[0];
+      var now = new Date();
+      var todayStr = (now.getFullYear()) + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
       var post = null;
 
-      // Find today's post or most recent ready post
       for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
-        var date = row.c[0] && row.c[0].v ? row.c[0].v : '';
-        // Google Sheets date comes as Date string
-        if (typeof date === 'string' && date.substring(0,10) === today) {
-          post = row; break;
+        var dateCell = row.c[0];
+        if (!dateCell || !dateCell.f) continue;
+        // f is formatted date like "6/4/2026"
+        var parts = dateCell.f.split('/');
+        if (parts.length === 3) {
+          var rowDate = parts[2] + '-' + parts[0].padStart(2,'0') + '-' + parts[1].padStart(2,'0');
+          if (rowDate === todayStr) { post = row; break; }
         }
       }
-      // Fallback: last row with Status = Ready
+
+      // Fallback: most recent row that has content
       if (!post) {
         for (var j = rows.length - 1; j >= 0; j--) {
-          var status = rows[j].c[13] && rows[j].c[13].v;
-          if (status && status.toString().trim() === 'Ready') { post = rows[j]; break; }
+          if (rows[j].c[4] && rows[j].c[4].v) { post = rows[j]; break; }
         }
       }
 
@@ -498,45 +501,42 @@ footer{background:var(--ink);border-top:1px solid var(--border-dk);padding:60px 
         return;
       }
 
-      var c = post.c;
-      var identity = c[2] && c[2].v || '';
-      var type = c[3] && c[3].v || '';
-      var headline = c[4] && c[4].v || '';
-      var mood = c[5] && c[5].v || '';
-      var imageUrl = c[6] && c[6].v || '';
-      var products = [c[7],c[8],c[9],c[10],c[11]].filter(function(p){return p && p.v;});
-      var cta = c[12] && c[12].v || '';
-      // Link columns (14-18) — added by user
-      var links = [c[14],c[15],c[16],c[17],c[18]].map(function(l){return l && l.v ? l.v : '';});
+      var cv = function(col) { return post.c[col] && post.c[col].v ? post.c[col].v : ''; };
+      var identity = cv(2);
+      var type = cv(3);
+      var headline = cv(4);
+      var mood = cv(5);
+      var imageUrl = cv(6);
+      var products = [cv(7),cv(8),cv(9),cv(10),cv(11)].filter(function(p){return p;});
+      var cta = cv(12);
+      var productLink = cv(14); // Column O - Product Link
 
-      var productHTML = products.map(function(p, i) {
-        var link = links[i];
-        var name = p.v;
-        if (link) {
-          return '<a href="' + link + '" target="_blank" rel="nofollow" style="display:inline-block;margin:5px;padding:10px 18px;background:#c0392b;color:#fff;border-radius:20px;text-decoration:none;font-size:0.85rem;font-weight:600;">' + name + '</a>';
+      var productHTML = products.map(function(name) {
+        if (productLink) {
+          return '<a href="' + productLink + '" target="_blank" rel="nofollow" style="display:inline-block;margin:5px;padding:10px 18px;background:#c0392b;color:#fff;border-radius:20px;text-decoration:none;font-size:0.85rem;font-weight:700;">' + name + '</a>';
         }
-        return '<span style="display:inline-block;margin:5px;padding:10px 18px;background:#333;color:#aaa;border-radius:20px;font-size:0.85rem;">' + name + '</span>';
+        return '<span style="display:inline-block;margin:5px;padding:10px 18px;background:#333;color:#ccc;border-radius:20px;font-size:0.85rem;">' + name + '</span>';
       }).join('');
 
-      var imgHTML = imageUrl && imageUrl !== '[photo]'
+      var imgHTML = (imageUrl && imageUrl !== '[photo]' && imageUrl !== 'Video' && imageUrl.startsWith('http'))
         ? '<img src="' + imageUrl + '" alt="' + headline + '" style="width:100%;max-height:500px;object-fit:cover;display:block;">'
         : '';
 
-      el.innerHTML = 
+      el.innerHTML =
         imgHTML +
         '<div style="padding:30px;">' +
           '<div style="margin-bottom:12px;">' +
             '<span style="background:#c0392b;color:#fff;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">' + identity + '</span>' +
             '<span style="color:#aaa;font-size:0.8rem;margin-left:10px;">' + type + '</span>' +
           '</div>' +
-          '<h3 style="color:#fff;font-size:1.6rem;margin:0 0 10px 0;">' + headline + '</h3>' +
+          '<h3 style="color:#fff;font-size:1.4rem;margin:0 0 10px 0;line-height:1.4;">' + headline + '</h3>' +
           '<p style="color:#bbb;margin:0 0 20px 0;line-height:1.6;">' + mood + '</p>' +
-          '<div style="margin-bottom:20px;">' + productHTML + '</div>' +
+          (productHTML ? '<div style="margin-bottom:20px;">' + productHTML + '</div>' : '') +
           (cta ? '<p style="color:#c0392b;font-weight:700;font-size:1rem;margin:0;">&#x2192; ' + cta + '</p>' : '') +
         '</div>';
     })
     .catch(function() {
-      document.getElementById('cr-daily-post').innerHTML = '<div style="padding:40px;text-align:center;color:#aaa;">Check back soon for today\'s look!</div>';
+      document.getElementById('cr-daily-post').innerHTML = '<div style="padding:40px;text-align:center;color:#aaa;">Check back soon!</div>';
     });
 })();
 </script>
