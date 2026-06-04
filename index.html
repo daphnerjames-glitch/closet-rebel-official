@@ -498,10 +498,7 @@ footer{background:var(--ink);border-top:1px solid var(--border-dk);padding:60px 
         var row=rows[i];
         var dc=row.c[0];
         if(!dc||!dc.f)continue;
-        var p=dc.f.split('/');
-        if(p.length===3){
-          var rd=p[2]+'-'+p[0].padStart(2,'0')+'-'+p[1].padStart(2,'0');
-          if(rd===todayStr){post=row;break;}
+        var if(dc.f&&dc.f.substring(0,10)===todayStr){post=row;break;}
         }
       }
       if(!post){for(var j=rows.length-1;j>=0;j--){if(rows[j].c[4]&&rows[j].c[4].v){post=rows[j];break;}}}
