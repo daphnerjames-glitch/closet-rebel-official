@@ -39,6 +39,16 @@ nav{position:sticky;top:0;z-index:200;background:rgba(253,246,238,0.96);backdrop
 .shop-hero h1 em{color:var(--pink-deep);font-style:italic;}
 .shop-hero p{font-size:1.05rem;color:var(--muted);max-width:580px;margin:0 auto 16px;}
 .disclosure{font-size:0.72rem;color:var(--muted);margin-top:8px;opacity:0.7;}
+.video-drops{padding:70px 0 20px;background:var(--white);}
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
+.video-card{position:relative;border-radius:20px;overflow:hidden;text-decoration:none;color:inherit;aspect-ratio:3/4;display:flex;align-items:flex-end;background:linear-gradient(135deg,var(--gold-lt),var(--pink));box-shadow:0 2px 20px rgba(0,0,0,0.08);transition:transform .2s,box-shadow .2s;}
+.video-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+.video-card-overlay{position:relative;width:100%;padding:20px;background:linear-gradient(to top, rgba(14,12,11,0.78), transparent);color:#fff;}
+.video-card h4{font-size:1.1rem;font-weight:700;margin-bottom:4px;font-family:'Cormorant Garamond',serif;}
+.video-card .shop-tag-video{display:block;font-size:0.72rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#fff;opacity:.9;}
+.video-drops-empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:0.9rem;padding:20px 0;}
+@media(max-width:768px){.video-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.video-grid{grid-template-columns:1fr;}}
 .platforms{padding:60px 0;background:var(--white);}
 .platforms-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px;}
 .platform-card{border-radius:20px;padding:40px;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;align-items:flex-start;gap:16px;position:relative;overflow:hidden;}
@@ -90,187 +100,236 @@ footer{background:var(--ink);border-top:1px solid var(--border-dk);padding:60px 
 </head>
 <body>
 <nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Closet <span>Rebel</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#style-tips">Style Tips</a></li>
-      <li><a href="shop.html" class="active">Shop</a></li>
-      <li><a href="index.html#app">The App</a></li>
-      <li><a href="quiz.html">Style Quiz</a></li>
-      <li><a href="https://www.facebook.com/profile.php?id=61573338413524" class="nav-cta" target="_blank">Join the Rebellion</a></li>
-    </ul>
-  </div>
+<div class="nav-inner">
+<a href="index.html" class="nav-logo">Closet <span>Rebel</span></a>
+<ul class="nav-links">
+<li><a href="index.html#about">About</a></li>
+<li><a href="index.html#style-tips">Style Tips</a></li>
+<li><a href="shop.html" class="active">Shop</a></li>
+<li><a href="index.html#app">The App</a></li>
+<li><a href="quiz.html">Style Quiz</a></li>
+<li><a href="https://www.facebook.com/profile.php?id=61573338413524" class="nav-cta" target="_blank">Join the Rebellion</a></li>
+</ul>
+</div>
 </nav>
 <div class="ticker">
-  <div class="ticker-track">
-    <span class="ticker-item">Dopamine Dressing <span class="ticker-dot">&#9670;</span></span>
-    <span class="ticker-item">No Rules <span class="ticker-dot">&#9670;</span></span>
-    <span class="ticker-item">Bold at Any Age <span class="ticker-dot">&#9670;</span></span>
-    <span class="ticker-item">Shop the Rebel Look <span class="ticker-dot">&#9670;</span></span>
-    <span class="ticker-item">Affiliate Links Support This Community <span class="ticker-dot">&#9670;</span></span>
-    <span class="ticker-item">Style Without Apology <span class="ticker-dot">&#9670;</span></span>
-    <span class="ticker-item">Dopamine Dressing <span class="ticker-dot">&#9670;</span></span>
-    <span class="ticker-item">No Rules <span class="ticker-dot">&#9670;</span></span>
-    <span class="ticker-item">Bold at Any Age <span class="ticker-dot">&#9670;</span></span>
-    <span class="ticker-item">Shop the Rebel Look <span class="ticker-dot">&#9670;</span></span>
-    <span class="ticker-item">Affiliate Links Support This Community <span class="ticker-dot">&#9670;</span></span>
-    <span class="ticker-item">Style Without Apology <span class="ticker-dot">&#9670;</span></span>
-  </div>
+<div class="ticker-track">
+<span class="ticker-item">Dopamine Dressing <span class="ticker-dot">&#9670;</span></span>
+<span class="ticker-item">No Rules <span class="ticker-dot">&#9670;</span></span>
+<span class="ticker-item">Bold at Any Age <span class="ticker-dot">&#9670;</span></span>
+<span class="ticker-item">Shop the Rebel Look <span class="ticker-dot">&#9670;</span></span>
+<span class="ticker-item">Affiliate Links Support This Community <span class="ticker-dot">&#9670;</span></span>
+<span class="ticker-item">Style Without Apology <span class="ticker-dot">&#9670;</span></span>
+<span class="ticker-item">Dopamine Dressing <span class="ticker-dot">&#9670;</span></span>
+<span class="ticker-item">No Rules <span class="ticker-dot">&#9670;</span></span>
+<span class="ticker-item">Bold at Any Age <span class="ticker-dot">&#9670;</span></span>
+<span class="ticker-item">Shop the Rebel Look <span class="ticker-dot">&#9670;</span></span>
+<span class="ticker-item">Affiliate Links Support This Community <span class="ticker-dot">&#9670;</span></span>
+<span class="ticker-item">Style Without Apology <span class="ticker-dot">&#9670;</span></span>
+</div>
 </div>
 <section class="shop-hero">
-  <div class="container">
-    <p class="tag">The Rebel Edit</p>
-    <h1>Shop the <em>Look</em></h1>
-    <p>Every piece I actually wear, love, and style. Bold prints, statement jewelry, kimonos, thrift-style finds — all hand-picked for the woman who dresses for herself.</p>
-    <p class="disclosure">&#9432; This page contains affiliate links. When you shop through my links, I earn a small commission at no extra cost to you. Thank you for supporting Closet Rebel!</p>
-  </div>
+<div class="container">
+<p class="tag">The Rebel Edit</p>
+<h1>Shop the <em>Look</em></h1>
+<p>Every piece I actually wear, love, and style. Bold prints, statement jewelry, kimonos, thrift-style finds — all hand-picked for the woman who dresses for herself.</p>
+<p class="disclosure">&#9432; This page contains affiliate links. When you shop through my links, I earn a small commission at no extra cost to you. Thank you for supporting Closet Rebel!</p>
+</div>
+</section>
+<section class="video-drops">
+<div class="container">
+<div class="section-header">
+<p class="tag">Fresh Off Camera</p>
+<h2>Latest Video Drops</h2>
+<p>A new shoppable video every week — tap one to shop everything in it.</p>
+</div>
+<div class="video-grid" id="video-drops-grid">
+<p class="video-drops-empty">Loading latest drops&hellip;</p>
+</div>
+</div>
 </section>
 <section class="platforms">
-  <div class="container">
-    <p class="tag" style="text-align:center;display:block;">Shop My Picks</p>
-    <h2 style="font-size:clamp(1.8rem,3vw,2.5rem);text-align:center;margin-bottom:8px;font-family:'Cormorant Garamond',serif;">Two Ways to Shop</h2>
-    <p style="text-align:center;color:var(--muted);margin-bottom:0;">Browse curated collections on ShopMy or explore my Amazon Storefront — both support Closet Rebel!</p>
-    <div class="platforms-grid">
-      <a href="https://shopmy.us/shop/closetrebelofficial?Section_id=2339046&tab=collections&utm_source=closetrebel_website" target="_blank" rel="noopener" class="platform-card shopmy">
-        <div class="plat-icon">&#128717;</div>
-        <h3>ShopMy Collections</h3>
-        <p>My curated collections — Accessories, Tops, Jewelry &amp; more. Every piece styled the Closet Rebel way. New finds added regularly.</p>
-        <span class="platform-badge">Browse Collections &rarr;</span>
-      </a>
-      <a href="https://a.co/d/0a5AJ3zY" target="_blank" rel="noopener" class="platform-card amazon">
-        <div class="plat-icon">&#9733;</div>
-        <h3>Amazon Storefront</h3>
-        <p>Affordable rebel finds on Amazon — bold fashion, statement pieces, and everyday style that does not break the bank. All under one roof.</p>
-        <span class="platform-badge">Shop Amazon &rarr;</span>
-      </a>
-    </div>
-  </div>
+<div class="container">
+<p class="tag" style="text-align:center;display:block;">Shop My Picks</p>
+<h2 style="font-size:clamp(1.8rem,3vw,2.5rem);text-align:center;margin-bottom:8px;font-family:'Cormorant Garamond',serif;">Two Ways to Shop</h2>
+<p style="text-align:center;color:var(--muted);margin-bottom:0;">Browse curated collections on ShopMy or explore my Amazon Storefront — both support Closet Rebel!</p>
+<div class="platforms-grid">
+<a href="https://shopmy.us/shop/closetrebelofficial?Section_id=2339046&tab=collections&utm_source=closetrebel_website" target="_blank" rel="noopener" class="platform-card shopmy">
+<div class="plat-icon">&#128717;</div>
+<h3>ShopMy Collections</h3>
+<p>My curated collections — Accessories, Tops, Jewelry &amp; more. Every piece styled the Closet Rebel way. New finds added regularly.</p>
+<span class="platform-badge">Browse Collections &rarr;</span>
+</a>
+<a href="https://a.co/d/0a5AJ3zY" target="_blank" rel="noopener" class="platform-card amazon">
+<div class="plat-icon">&#9733;</div>
+<h3>Amazon Storefront</h3>
+<p>Affordable rebel finds on Amazon — bold fashion, statement pieces, and everyday style that does not break the bank. All under one roof.</p>
+<span class="platform-badge">Shop Amazon &rarr;</span>
+</a>
+</div>
+</div>
 </section>
 <section class="shop-categories">
-  <div class="container">
-    <div class="section-header">
-      <p class="tag">Shop by Vibe</p>
-      <h2>What Are You Styling Today?</h2>
-      <p>Pick a category and let us build an outfit around it — the Closet Rebel way.</p>
-    </div>
-    <div class="cat-grid">
-      <a href="https://shopmy.us/shop/closetrebelofficial?Section_id=2339046&tab=collections&utm_source=closetrebel_accessories" target="_blank" rel="noopener" class="cat-card">
-        <div class="cat-card-img">&#128141;</div>
-        <div class="cat-card-body">
-          <p class="cat-label">ShopMy Collection</p>
-          <h4>Accessories</h4>
-          <p>Scarves, sunnies, statement socks and everything that makes an outfit POP. 3 hand-picked pieces.</p>
-          <span class="shop-tag">Shop Now &rarr;</span>
-        </div>
-      </a>
-      <a href="https://shopmy.us/shop/closetrebelofficial?Section_id=2339046&tab=collections&utm_source=closetrebel_tops" target="_blank" rel="noopener" class="cat-card">
-        <div class="cat-card-img">&#128248;</div>
-        <div class="cat-card-body">
-          <p class="cat-label">ShopMy Collection</p>
-          <h4>Tops</h4>
-          <p>Bold prints, flowy blouses and layering pieces that do all the talking. 5 rebel-approved tops.</p>
-          <span class="shop-tag">Shop Now &rarr;</span>
-        </div>
-      </a>
-      <a href="https://shopmy.us/shop/closetrebelofficial?Section_id=2339046&tab=collections&utm_source=closetrebel_holiday" target="_blank" rel="noopener" class="cat-card">
-        <div class="cat-card-img">&#127881;</div>
-        <div class="cat-card-body">
-          <p class="cat-label">ShopMy Collection</p>
-          <h4>Holiday Picks</h4>
-          <p>Festive, fun and unapologetically you. Holiday looks that make a statement without the stress.</p>
-          <span class="shop-tag">Shop Now &rarr;</span>
-        </div>
-      </a>
-      <a href="https://a.co/d/0a5AJ3zY" target="_blank" rel="noopener" class="cat-card">
-        <div class="cat-card-img">&#128141;</div>
-        <div class="cat-card-body">
-          <p class="cat-label">Amazon Finds</p>
-          <h4>Statement Jewelry</h4>
-          <p>The necklace that starts the conversation. Bold pieces under $30 that style any look up instantly.</p>
-          <span class="shop-tag">Shop Amazon &rarr;</span>
-        </div>
-      </a>
-      <a href="https://a.co/d/0a5AJ3zY" target="_blank" rel="noopener" class="cat-card">
-        <div class="cat-card-img">&#129333;</div>
-        <div class="cat-card-body">
-          <p class="cat-label">Amazon Finds</p>
-          <h4>Kimonos and Layers</h4>
-          <p>One kimono, three completely different vibes. My go-to layering pieces for every season.</p>
-          <span class="shop-tag">Shop Amazon &rarr;</span>
-        </div>
-      </a>
-      <a href="https://a.co/d/0a5AJ3zY" target="_blank" rel="noopener" class="cat-card">
-        <div class="cat-card-img">&#128176;</div>
-        <div class="cat-card-body">
-          <p class="cat-label">Amazon Finds</p>
-          <h4>Under $50 Rebel Finds</h4>
-          <p>Bold does not have to mean expensive. My current Amazon favorites worth every penny.</p>
-          <span class="shop-tag">Shop Amazon &rarr;</span>
-        </div>
-      </a>
-    </div>
-  </div>
+<div class="container">
+<div class="section-header">
+<p class="tag">Shop by Vibe</p>
+<h2>What Are You Styling Today?</h2>
+<p>Pick a category and let us build an outfit around it — the Closet Rebel way.</p>
+</div>
+<div class="cat-grid">
+<a href="https://shopmy.us/shop/closetrebelofficial?Section_id=2339046&tab=collections&utm_source=closetrebel_accessories" target="_blank" rel="noopener" class="cat-card">
+<div class="cat-card-img">&#128141;</div>
+<div class="cat-card-body">
+<p class="cat-label">ShopMy Collection</p>
+<h4>Accessories</h4>
+<p>Scarves, sunnies, statement socks and everything that makes an outfit POP. 3 hand-picked pieces.</p>
+<span class="shop-tag">Shop Now &rarr;</span>
+</div>
+</a>
+<a href="https://shopmy.us/shop/closetrebelofficial?Section_id=2339046&tab=collections&utm_source=closetrebel_tops" target="_blank" rel="noopener" class="cat-card">
+<div class="cat-card-img">&#128248;</div>
+<div class="cat-card-body">
+<p class="cat-label">ShopMy Collection</p>
+<h4>Tops</h4>
+<p>Bold prints, flowy blouses and layering pieces that do all the talking. 5 rebel-approved tops.</p>
+<span class="shop-tag">Shop Now &rarr;</span>
+</div>
+</a>
+<a href="https://shopmy.us/shop/closetrebelofficial?Section_id=2339046&tab=collections&utm_source=closetrebel_holiday" target="_blank" rel="noopener" class="cat-card">
+<div class="cat-card-img">&#127881;</div>
+<div class="cat-card-body">
+<p class="cat-label">ShopMy Collection</p>
+<h4>Holiday Picks</h4>
+<p>Festive, fun and unapologetically you. Holiday looks that make a statement without the stress.</p>
+<span class="shop-tag">Shop Now &rarr;</span>
+</div>
+</a>
+<a href="https://a.co/d/0a5AJ3zY" target="_blank" rel="noopener" class="cat-card">
+<div class="cat-card-img">&#128141;</div>
+<div class="cat-card-body">
+<p class="cat-label">Amazon Finds</p>
+<h4>Statement Jewelry</h4>
+<p>The necklace that starts the conversation. Bold pieces under $30 that style any look up instantly.</p>
+<span class="shop-tag">Shop Amazon &rarr;</span>
+</div>
+</a>
+<a href="https://a.co/d/0a5AJ3zY" target="_blank" rel="noopener" class="cat-card">
+<div class="cat-card-img">&#129333;</div>
+<div class="cat-card-body">
+<p class="cat-label">Amazon Finds</p>
+<h4>Kimonos and Layers</h4>
+<p>One kimono, three completely different vibes. My go-to layering pieces for every season.</p>
+<span class="shop-tag">Shop Amazon &rarr;</span>
+</div>
+</a>
+<a href="https://a.co/d/0a5AJ3zY" target="_blank" rel="noopener" class="cat-card">
+<div class="cat-card-img">&#128176;</div>
+<div class="cat-card-body">
+<p class="cat-label">Amazon Finds</p>
+<h4>Under $50 Rebel Finds</h4>
+<p>Bold does not have to mean expensive. My current Amazon favorites worth every penny.</p>
+<span class="shop-tag">Shop Amazon &rarr;</span>
+</div>
+</a>
+</div>
+</div>
 </section>
 <section class="shop-cta-banner">
-  <div class="container">
-    <p class="tag" style="color:var(--gold-lt);">Join the Rebellion</p>
-    <h2>Dress for <em>Who You Are</em> Now</h2>
-    <p>Find your style, build your wardrobe, and shop pieces that actually make you feel like yourself.</p>
-    <div class="cta-row">
-      <a href="https://shopmy.us/shop/closetrebelofficial?Section_id=2339046&tab=collections" target="_blank" rel="noopener" class="btn-primary">Browse ShopMy</a>
-      <a href="https://a.co/d/0a5AJ3zY" target="_blank" rel="noopener" class="btn-gold">Amazon Storefront</a>
-      <a href="quiz.html" class="btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.3);">Find Your Style</a>
-    </div>
-  </div>
+<div class="container">
+<p class="tag" style="color:var(--gold-lt);">Join the Rebellion</p>
+<h2>Dress for <em>Who You Are</em> Now</h2>
+<p>Find your style, build your wardrobe, and shop pieces that actually make you feel like yourself.</p>
+<div class="cta-row">
+<a href="https://shopmy.us/shop/closetrebelofficial?Section_id=2339046&tab=collections" target="_blank" rel="noopener" class="btn-primary">Browse ShopMy</a>
+<a href="https://a.co/d/0a5AJ3zY" target="_blank" rel="noopener" class="btn-gold">Amazon Storefront</a>
+<a href="quiz.html" class="btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.3);">Find Your Style</a>
+</div>
+</div>
 </section>
 <footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <a href="index.html" class="footer-logo">Closet <span>Rebel</span></a>
-        <p class="footer-tagline">Bold fashion, real outfits, zero apologies. For the Gen X woman done dressing for everyone else.</p>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/closetrebelofficial/" target="_blank" title="Instagram">&#128247;</a>
-          <a href="https://www.facebook.com/profile.php?id=61573338413524" target="_blank" title="Facebook">&#128100;</a>
-          <a href="https://www.youtube.com/@DaphneJames-q2g" target="_blank" title="YouTube">&#9654;</a>
-          <a href="https://www.pinterest.com/daphnerjames/" target="_blank" title="Pinterest">&#128204;</a>
-          <a href="https://www.threads.net/@closetrebelofficial" target="_blank" title="Threads">&#128172;</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h5>Explore</h5>
-        <ul>
-          <li><a href="index.html#about">About Daphne</a></li>
-          <li><a href="index.html#style-tips">Style Tips</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="quiz.html">Style Quiz</a></li>
-          <li><a href="index.html#app">The App</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Shop</h5>
-        <ul>
-          <li><a href="https://shopmy.us/shop/closetrebelofficial" target="_blank">ShopMy Collections</a></li>
-          <li><a href="https://a.co/d/0a5AJ3zY" target="_blank">Amazon Storefront</a></li>
-          <li><a href="https://daphnejamesdesigns.etsy.com" target="_blank">Etsy Shop</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Connect</h5>
-        <ul>
-          <li><a href="https://www.instagram.com/closetrebelofficial/" target="_blank">Instagram</a></li>
-          <li><a href="https://www.youtube.com/@DaphneJames-q2g" target="_blank">YouTube</a></li>
-          <li><a href="https://www.buzzsprout.com/2615589" target="_blank">Podcast</a></li>
-          <li><a href="https://www.facebook.com/profile.php?id=61573338413524" target="_blank">Facebook</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Closet Rebel Official. All rights reserved.</p>
-      <p>This page contains affiliate links.</p>
-    </div>
-  </div>
+<div class="container">
+<div class="footer-inner">
+<div>
+<a href="index.html" class="footer-logo">Closet <span>Rebel</span></a>
+<p class="footer-tagline">Bold fashion, real outfits, zero apologies. For the Gen X woman done dressing for everyone else.</p>
+<div class="footer-social">
+<a href="https://www.instagram.com/closetrebelofficial/" target="_blank" title="Instagram">&#128247;</a>
+<a href="https://www.facebook.com/profile.php?id=61573338413524" target="_blank" title="Facebook">&#128100;</a>
+<a href="https://www.youtube.com/@DaphneJames-q2g" target="_blank" title="YouTube">&#9654;</a>
+<a href="https://www.pinterest.com/daphnerjames/" target="_blank" title="Pinterest">&#128204;</a>
+<a href="https://www.threads.net/@closetrebelofficial" target="_blank" title="Threads">&#128172;</a>
+</div>
+</div>
+<div class="footer-col">
+<h5>Explore</h5>
+<ul>
+<li><a href="index.html#about">About Daphne</a></li>
+<li><a href="index.html#style-tips">Style Tips</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="quiz.html">Style Quiz</a></li>
+<li><a href="index.html#app">The App</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h5>Shop</h5>
+<ul>
+<li><a href="https://shopmy.us/shop/closetrebelofficial" target="_blank">ShopMy Collections</a></li>
+<li><a href="https://a.co/d/0a5AJ3zY" target="_blank">Amazon Storefront</a></li>
+<li><a href="https://daphnejamesdesigns.etsy.com" target="_blank">Etsy Shop</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h5>Connect</h5>
+<ul>
+<li><a href="https://www.instagram.com/closetrebelofficial/" target="_blank">Instagram</a></li>
+<li><a href="https://www.youtube.com/@DaphneJames-q2g" target="_blank">YouTube</a></li>
+<li><a href="https://www.buzzsprout.com/2615589" target="_blank">Podcast</a></li>
+<li><a href="https://www.facebook.com/profile.php?id=61573338413524" target="_blank">Facebook</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2025 Closet Rebel Official. All rights reserved.</p>
+<p>This page contains affiliate links.</p>
+</div>
+</div>
 </footer>
+<script>
+(function(){
+  var SUPABASE_URL = "https://hudzylfslggjtzhplebe.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_JMJS6Fzed6xPHuMUGitYlA_VgQsM7xE";
+  var grid = document.getElementById('video-drops-grid');
+
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  fetch(SUPABASE_URL + "/rest/v1/shopmy_drops?select=*&order=posted_at.desc&limit=9", {
+    headers: {
+      "apikey": SUPABASE_KEY,
+      "Authorization": "Bearer " + SUPABASE_KEY
+    }
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(drops){
+    if(!drops || !drops.length){
+      grid.innerHTML = '<p class="video-drops-empty">New drop coming soon — check back Sunday!</p>';
+      return;
+    }
+    grid.innerHTML = drops.map(function(d){
+      var thumbStyle = d.thumbnail_url ? ('background-image:url(\'' + esc(d.thumbnail_url) + '\');background-size:cover;background-position:center;') : '';
+      var url = esc(d.collection_url) + (d.collection_url.indexOf('?') > -1 ? '&' : '?') + 'utm_source=closetrebel_website';
+      return '<a class="video-card" style="' + thumbStyle + '" href="' + url + '" target="_blank" rel="noopener">' +
+        '<div class="video-card-overlay"><h4>' + esc(d.title) + '</h4><span class="shop-tag-video">Shop this video &rarr;</span></div>' +
+        '</a>';
+    }).join('');
+  })
+  .catch(function(){
+    grid.innerHTML = '<p class="video-drops-empty">New drop coming soon — check back Sunday!</p>';
+  });
+})();
+</script>
 </body>
 </html>
