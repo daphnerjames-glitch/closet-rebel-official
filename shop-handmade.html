@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shop Handmade — Closet Rebel Official</title>
+<meta name="description" content="Shop Daphne James handmade earrings, necklaces, bag charms and tassel keychains — one of a kind pieces made with love." />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+<style>
+:root{--blush:#f2c4ce;--pink:#e8748a;--pink-deep:#c94f68;--gold:#c9963a;--gold-lt:#e8c07a;--gold-soft:rgba(201,150,58,0.12);--cream:#fdf6ee;--cream2:#f7ede0;--black:#0e0c0b;--ink:#1a1614;--ink2:#261f1c;--border:#e4d5c8;--border-dk:#2e2421;--muted:#8a7060;--text:#3d2e28;--white:#fffdf9;--shadow:0 4px 40px rgba(201,150,58,0.10);--shadow-lg:0 12px 60px rgba(14,12,11,0.14);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{background:var(--cream);color:var(--text);font-family:'Jost',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;line-height:1.1;letter-spacing:-0.01em;}
+.container{max-width:1140px;margin:0 auto;padding:0 32px;}
+.tag{display:inline-block;font-size:0.68rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.btn-primary{display:inline-block;background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;padding:14px 36px;border-radius:50px;font-family:'Jost',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(232,116,138,0.35);}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-primary:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+nav{position:sticky;top:0;z-index:200;background:rgba(253,246,238,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:70px;display:flex;align-items:center;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1140px;margin:0 auto;padding:0 32px;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--black);text-decoration:none;letter-spacing:0.02em;}
+.nav-logo span{color:var(--pink-deep);font-style:italic;}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--pink-deep);}
+.nav-cta{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff !important;padding:9px 22px;border-radius:50px;font-size:0.78rem !important;font-weight:600 !important;box-shadow:0 2px 16px rgba(232,116,138,.30);}
+.cart-btn{position:relative;background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--ink);}
+.cart-count{position:absolute;top:-6px;right:-10px;background:var(--pink-deep);color:#fff;font-size:0.65rem;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;}
+.shop-hero{padding:70px 0 40px;background:linear-gradient(135deg,var(--cream) 0%,var(--cream2) 100%);text-align:center;border-bottom:1px solid var(--border);}
+.shop-hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:var(--ink);margin-bottom:12px;}
+.shop-hero h1 em{color:var(--pink-deep);font-style:italic;}
+.shop-hero p{font-size:1rem;color:var(--muted);max-width:580px;margin:0 auto 8px;}
+.products{padding:60px 0;background:var(--white);}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:16px;}
+.product-card{background:var(--cream);border-radius:18px;overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,0.05);display:flex;flex-direction:column;}
+.product-img{aspect-ratio:1;background:var(--cream2);overflow:hidden;}
+.product-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.product-body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1;}
+.product-body h4{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:8px;line-height:1.35;font-family:'Jost',sans-serif;}
+.product-price{font-size:1.15rem;font-weight:700;color:var(--pink-deep);margin-bottom:14px;}
+.add-btn{margin-top:auto;display:inline-block;background:var(--ink);color:#fff;padding:11px 20px;border-radius:50px;font-size:0.78rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s;}
+.add-btn:hover{background:var(--pink-deep);}
+.products-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0;}
+@media(max-width:900px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.product-grid{grid-template-columns:1fr;}}
+.cart-overlay{position:fixed;inset:0;background:rgba(14,12,11,0.5);z-index:400;display:none;}
+.cart-overlay.open{display:block;}
+.cart-panel{position:fixed;top:0;right:0;bottom:0;width:380px;max-width:90vw;background:var(--white);z-index:401;transform:translateX(100%);transition:transform .3s;display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(0,0,0,0.15);}
+.cart-panel.open{transform:translateX(0);}
+.cart-header{padding:24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.cart-header h3{font-size:1.4rem;}
+.cart-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted);}
+.cart-items{flex:1;overflow-y:auto;padding:16px 24px;}
+.cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);align-items:center;}
+.cart-item img{width:56px;height:56px;object-fit:cover;border-radius:10px;background:var(--cream2);}
+.cart-item-info{flex:1;}
+.cart-item-info h5{font-size:0.85rem;font-weight:600;margin-bottom:4px;}
+.cart-item-info .qty-row{display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--muted);}
+.qty-row button{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:0.85rem;line-height:1;}
+.remove-btn{background:none;border:none;color:var(--pink-deep);font-size:0.75rem;cursor:pointer;text-decoration:underline;margin-left:8px;}
+.cart-footer{padding:20px 24px;border-top:1px solid var(--border);}
+.cart-total{display:flex;justify-content:space-between;font-size:1.1rem;font-weight:700;margin-bottom:16px;}
+.cart-empty{color:var(--muted);text-align:center;padding:40px 0;}
+footer{background:var(--ink);border-top:1px solid var(--border-dk);padding:40px 0 24px;text-align:center;}
+footer p{color:rgba(255,255,255,.4);font-size:0.8rem;}
+footer a{color:var(--pink);text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="nav-logo">Closet <span>Rebel</span></a>
+<ul class="nav-links">
+<li><a href="index.html#about">About</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="shop-handmade.html" class="active">Shop Handmade</a></li>
+<li><a href="quiz.html">Style Quiz</a></li>
+</ul>
+<button class="cart-btn" id="cart-toggle">&#128717;<span class="cart-count" id="cart-count" style="display:none;">0</span></button>
+</div>
+</nav>
+<section class="shop-hero">
+<div class="container">
+<p class="tag">Made By Daphne</p>
+<h1>Shop <em>Handmade</em></h1>
+<p>One-of-a-kind earrings, necklaces, bag charms, air fresheners and tassel keychains — handcrafted with love, shipped straight from Closet Rebel.</p>
+</div>
+</section>
+<section class="products">
+<div class="container">
+<div class="product-grid" id="product-grid">
+<p class="products-empty">Loading handmade goodies&hellip;</p>
+</div>
+</div>
+</section>
+<footer>
+<div class="container">
+<p>&copy; 2026 Closet Rebel Official. Handmade with love. <a href="shop.html">Back to Shop</a></p>
+</div>
+</footer>
+
+<div class="cart-overlay" id="cart-overlay"></div>
+<div class="cart-panel" id="cart-panel">
+<div class="cart-header">
+<h3>Your Cart</h3>
+<button class="cart-close" id="cart-close">&times;</button>
+</div>
+<div class="cart-items" id="cart-items"></div>
+<div class="cart-footer">
+<div class="cart-total"><span>Total</span><span id="cart-total">$0.00</span></div>
+<button class="btn-primary" id="checkout-btn" style="width:100%;text-align:center;">Checkout</button>
+</div>
+</div>
+
+<script>
+(function(){
+var SUPABASE_URL = "https://hudzylfslggjtzhplebe.supabase.co";
+var SUPABASE_KEY = "sb_publishable_JMJS6Fzed6xPHuMUGitYlA_VgQsM7xE";
+var CART_KEY = "closetrebel_handmade_cart";
+var grid = document.getElementById('product-grid');
+var products = [];
+
+function esc(s){
+return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+});
+}
+function money(cents){ return '$' + (cents/100).toFixed(2); }
+
+function getCart(){
+try { return JSON.parse(localStorage.getItem(CART_KEY)) || {}; } catch(e){ return {}; }
+}
+function setCart(cart){
+localStorage.setItem(CART_KEY, JSON.stringify(cart));
+renderCartCount();
+renderCartItems();
+}
+function addToCart(id){
+var cart = getCart();
+cart[id] = (cart[id] || 0) + 1;
+setCart(cart);
+openCart();
+}
+function changeQty(id, delta){
+var cart = getCart();
+cart[id] = (cart[id] || 0) + delta;
+if(cart[id] <= 0) delete cart[id];
+setCart(cart);
+}
+function removeFromCart(id){
+var cart = getCart();
+delete cart[id];
+setCart(cart);
+}
+function renderCartCount(){
+var cart = getCart();
+var count = Object.keys(cart).reduce(function(sum,id){ return sum + cart[id]; }, 0);
+var el = document.getElementById('cart-count');
+if(count > 0){ el.style.display = 'flex'; el.textContent = count; }
+else { el.style.display = 'none'; }
+}
+function renderCartItems(){
+var cart = getCart();
+var container = document.getElementById('cart-items');
+var ids = Object.keys(cart);
+if(ids.length === 0){
+container.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
+document.getElementById('cart-total').textContent = '$0.00';
+return;
+}
+var total = 0;
+container.innerHTML = ids.map(function(id){
+var p = products.find(function(x){ return x.id === id; });
+if(!p) return '';
+var qty = cart[id];
+total += p.price_cents * qty;
+return '<div class="cart-item">' +
+'<img src="' + esc(p.image_url) + '" alt="' + esc(p.title) + '">' +
+'<div class="cart-item-info">' +
+'<h5>' + esc(p.title) + '</h5>' +
+'<div class="qty-row">' +
+'<button onclick="window.__crChangeQty(\'' + id + '\',-1)">&minus;</button>' +
+'<span>' + qty + '</span>' +
+'<button onclick="window.__crChangeQty(\'' + id + '\',1)">+</button>' +
+'<span>' + money(p.price_cents * qty) + '</span>' +
+'<button class="remove-btn" onclick="window.__crRemove(\'' + id + '\')">Remove</button>' +
+'</div></div></div>';
+}).join('');
+document.getElementById('cart-total').textContent = money(total);
+}
+window.__crChangeQty = changeQty;
+window.__crRemove = removeFromCart;
+window.__crAdd = addToCart;
+
+function openCart(){
+document.getElementById('cart-overlay').classList.add('open');
+document.getElementById('cart-panel').classList.add('open');
+}
+function closeCart(){
+document.getElementById('cart-overlay').classList.remove('open');
+document.getElementById('cart-panel').classList.remove('open');
+}
+document.getElementById('cart-toggle').addEventListener('click', openCart);
+document.getElementById('cart-close').addEventListener('click', closeCart);
+document.getElementById('cart-overlay').addEventListener('click', closeCart);
+
+document.getElementById('checkout-btn').addEventListener('click', function(){
+var cart = getCart();
+var ids = Object.keys(cart);
+if(ids.length === 0) return;
+var btn = this;
+btn.disabled = true;
+btn.textContent = 'Redirecting…';
+var items = ids.map(function(id){ return { product_id: id, quantity: cart[id] }; });
+fetch(SUPABASE_URL + "/functions/v1/create-product-checkout", {
+method: "POST",
+headers: {
+"Content-Type": "application/json",
+"apikey": SUPABASE_KEY,
+"Authorization": "Bearer " + SUPABASE_KEY
+},
+body: JSON.stringify({ items: items })
+})
+.then(function(r){ return r.json(); })
+.then(function(data){
+if(data.url){ window.location.href = data.url; }
+else { alert(data.error || 'Checkout failed, please try again.'); btn.disabled = false; btn.textContent = 'Checkout'; }
+})
+.catch(function(){ alert('Checkout failed, please try again.'); btn.disabled = false; btn.textContent = 'Checkout'; });
+});
+
+fetch(SUPABASE_URL + "/rest/v1/handmade_products?select=*&active=eq.true&order=created_at.desc", {
+headers: {
+"apikey": SUPABASE_KEY,
+"Authorization": "Bearer " + SUPABASE_KEY
+}
+})
+.then(function(r){ return r.json(); })
+.then(function(data){
+products = data || [];
+if(!products.length){
+grid.innerHTML = '<p class="products-empty">New handmade pieces coming soon!</p>';
+return;
+}
+grid.innerHTML = products.map(function(p){
+return '<div class="product-card">' +
+'<div class="product-img"><img src="' + esc(p.image_url) + '" alt="' + esc(p.title) + '" loading="lazy"></div>' +
+'<div class="product-body">' +
+'<h4>' + esc(p.title) + '</h4>' +
+'<div class="product-price">' + money(p.price_cents) + '</div>' +
+'<button class="add-btn" onclick="window.__crAdd(\'' + p.id + '\')">Add to Cart</button>' +
+'</div></div>';
+}).join('');
+renderCartCount();
+})
+.catch(function(){
+grid.innerHTML = '<p class="products-empty">Could not load products right now — please refresh.</p>';
+});
+
+renderCartCount();
+renderCartItems();
+})();
+</script>
+</body>
+</html>
