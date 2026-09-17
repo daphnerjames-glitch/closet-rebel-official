@@ -287,7 +287,6 @@ footer{background:var(--ink);border-top:1px solid var(--border-dk);padding:60px 
       
       <li><a href="#app">The App</a></li>
       <li><a href="#quiz">Style Quiz</a></li>
-      <li><a href="#hh-signup" class="nav-cta" target="_blank">Join the Rebellion</a></li>
     </ul>
   </div>
 </nav>
@@ -373,7 +372,6 @@ footer{background:var(--ink);border-top:1px solid var(--border-dk);padding:60px 
           <span class="pill">Bold at 59</span>
           <span class="pill">Style Sessions</span>
         </div>
-        <a href="#hh-signup" class="btn-gold">Join the Rebellion</a>
       </div>
     </div>
   </div>
@@ -535,7 +533,6 @@ footer{background:var(--ink);border-top:1px solid var(--border-dk);padding:60px 
       
       <a href="#app" style="color:#fff;text-decoration:none;padding:12px 24px;border:1px solid rgba(255,255,255,.3);border-radius:30px;font-size:0.85rem;">The App</a>
       <a href="#quiz" style="color:#fff;text-decoration:none;padding:12px 24px;border:1px solid rgba(255,255,255,.3);border-radius:30px;font-size:0.85rem;">Style Quiz</a>
-      <a href="#hh-signup" style="background:linear-gradient(135deg,#e8748a,#c94f68);color:#fff;text-decoration:none;padding:12px 28px;border-radius:30px;font-weight:600;font-size:0.85rem;">Join the Rebellion</a>
     </div>
   </div>
 </section>
@@ -625,22 +622,6 @@ footer{background:var(--ink);border-top:1px solid var(--border-dk);padding:60px 
   </div>
 </section>
 
-<!-- EMAIL SIGNUP -->
-<section class="email-section" id="hh-signup">
-  <div class="container">
-    <div class="email-inner">
-      <span class="tag" style="color:rgba(255,255,255,0.8);">Join the Rebellion</span>
-      <h2>Style Secrets.<br>Straight to Your Inbox.</h2>
-      <p>Weekly outfit inspo, bold fashion finds, and exclusive Closet Rebel drops. No rules. No fluff. Just style.</p>
-      <form class="email-form" onsubmit="handleSignup(event)">
-        <input type="email" placeholder="Your email address" required />
-        <button type="submit">Join Free</button>
-      </form>
-      <p class="email-note">& No spam. Unsubscribe anytime. Just good style.</p>
-    </div>
-  </div>
-</section>
-
 <!-- SOCIAL -->
 <section class="social-section">
   <div class="container">
@@ -687,7 +668,7 @@ footer{background:var(--ink);border-top:1px solid var(--border-dk);padding:60px 
           <li><a href="#app">Get the App</a></li>
           <li><a href="#about">About Daphne</a></li>
           <li><a href="#blog">Style Tips</a></li>
-          <li><a href="#shop">Shop the Look</a></li>
+          <li><a href="#app">Shop the Look</a></li>
           <li><a href="#quiz">Style Quiz</a></li>
         </ul>
       </div>
@@ -696,8 +677,6 @@ footer{background:var(--ink);border-top:1px solid var(--border-dk);padding:60px 
         <h5>Connect</h5>
         <ul>
           <li><a href="https://linktr.ee/daphne.james" target="_blank">Linktree</a></li>
-          <li><a href="#hh-signup">Email List</a></li>
-          <li><a href="#hh-signup">Style Sessions</a></li>
         </ul>
       </div>
     </div>
@@ -835,7 +814,6 @@ function handleSignup(e) {
       region.innerHTML = `
           <h3 style="color: #C1735B; font-size: 1.5rem; margin-bottom: 1rem;">Your Rebel Style:</h3>
               <p style="font-size: 1.2rem; margin-bottom: 2rem;">${resultText[winnerType]}</p>
-                  <button onclick="location.href='#hh-signup'" style="padding: 12px 32px; background: #C1735B; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem;">Join the Rebellion</button>
                     `;
   }
 
